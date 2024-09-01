@@ -9,13 +9,22 @@ class MetronomeEngine{
     private var timer: Timer?
     public var isPlaying: Bool = false
     init() {
+        initAudioSession()
         audioEngine.attach(clickNode)
         format = audioEngine.mainMixerNode.outputFormat(forBus: 0)
         audioEngine.connect(clickNode, to: audioEngine.mainMixerNode, format: format)
-        loadClickSound()
+        initClickSound()
     }
-
-    private func loadClickSound() {
+    private func initAudiosession(){
+    let audioSession = AVAudioSession.sharedInstance()
+          do {
+              try audioSession.setCategory(.playback, mode: .default, options: [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker])
+              try audioSession.setActive(true)
+          } catch {
+              print("Failed to set up audio session: \(error.localizedDescription)")
+          }
+    }
+    private func initClickSound() {
         let sampleRate = format.sampleRate
         let duration: Double = 0.01 // duration of the click sound in seconds
         let frameCount = AVAudioFrameCount(sampleRate * duration)
