@@ -45,7 +45,6 @@ class MetronomeEngine{
         }
         isPlaying = true
         clickNode.scheduleBuffer(clickBuffer!, at: nil, options: .loops, completionHandler: nil)
-
         let interval = 60.0 / Double(bpm)
         timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
             guard let self = self else { return }
