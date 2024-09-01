@@ -1,3 +1,4 @@
+import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
 
 import 'package:metronome/metronome.dart';
@@ -19,6 +20,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    AudioSession.instance.then((instance) {
+      instance.configure(const AudioSessionConfiguration.speech());
+    });
   }
 
   @override
