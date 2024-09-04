@@ -9,13 +9,13 @@ class MetronomeEngine{
     private var timer: Timer?
     public var isPlaying: Bool = false
     init() {
-        initAudioSession()
         audioEngine.attach(clickNode)
         format = audioEngine.mainMixerNode.outputFormat(forBus: 0)
         audioEngine.connect(clickNode, to: audioEngine.mainMixerNode, format: format)
         initClickSound()
+        initAudioSession()
     }
-    private func initAudiosession(){
+    private func initAudioSession(){
     let audioSession = AVAudioSession.sharedInstance()
           do {
               try audioSession.setCategory(.playback, mode: .default, options: [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker])
