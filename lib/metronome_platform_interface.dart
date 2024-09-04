@@ -28,4 +28,12 @@ abstract class MetronomePlatform extends PlatformInterface {
   Future<bool> isPlaying() {
     throw UnimplementedError('isPlaying() has not been implemented.');
   }
+
+  Future<bool> setBPM(int bpm) {
+    throw UnimplementedError('setBPM() has not been implemented.');
+  }
+
+  Future<int> getBPM() {
+    throw UnimplementedError('getBPM() has not been implemented.');
+  }
 }

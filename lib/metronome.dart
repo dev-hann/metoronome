@@ -12,4 +12,12 @@ class Metronome {
   Future<bool> isPlaying() {
     return MetronomePlatform.instance.isPlaying();
   }
+
+  Future<bool> setBPM(int bpm) {
+    return MetronomePlatform.instance.setBPM(bpm);
+  }
+
+  Future<int> getBPM() {
+    return MetronomePlatform.instance.getBPM();
+  }
 }

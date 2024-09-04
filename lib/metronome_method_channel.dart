@@ -27,4 +27,19 @@ class MethodChannelMetronome extends MetronomePlatform {
     final result = await methodChannel.invokeMethod<bool>('stop');
     return result ?? false;
   }
+
+  @override
+  Future<bool> setBPM(int bpm) async {
+    final result = await methodChannel.invokeMethod<bool>(
+      'setBPM',
+      {"bpm": bpm},
+    );
+    return result ?? false;
+  }
+
+  @override
+  Future<int> getBPM() async {
+    final result = await methodChannel.invokeMethod<int>('getBPM');
+    return result ?? -1;
+  }
 }
