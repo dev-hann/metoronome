@@ -33,6 +33,17 @@ class MetronomePlugin: FlutterPlugin, MethodCallHandler {
                   "isPlaying"->{
                      result.success(engine.isPlaying)
                   }
+                  "setBPM"->{
+                      val arguments = call.arguments as Map<String, Any>
+                      val bpm = arguments?.get("bpm") as Int
+                      engine.setBPM(bpm)
+                      result.success(true)
+                  }
+
+                  "getBPM"->{
+                      val bpm = engine.getBPM()
+                      result.success(bpm)
+                  }
                   else -> {
                       result.notImplemented()
                   }

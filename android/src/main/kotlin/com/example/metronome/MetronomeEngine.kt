@@ -15,6 +15,7 @@ class MetronomeEngine {
     private var clickBuffer: ShortArray = ShortArray(frameCount)
     private var audioTrack: AudioTrack? = null
     private var timer: java.util.Timer? = null
+    private var bpm: Int =170;
     var isPlaying: Boolean = false
 
     init {
@@ -61,6 +62,7 @@ class MetronomeEngine {
                 return
         }
         isPlaying = true
+
         audioTrack?.play()
         val interval = 60.0 / bpm
         timer = fixedRateTimer(period = (interval * 1000).toLong()) {
@@ -75,5 +77,12 @@ class MetronomeEngine {
         timer?.cancel()
         timer = null
         audioTrack?.stop()
+    }
+    fun setBPM(bpm: Int){
+        this.bpm = bpm
+    }
+
+    fun getBPM():Int{
+        return bpm
     }
 }

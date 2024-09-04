@@ -26,6 +26,12 @@ public class MetronomePlugin: NSObject, FlutterPlugin {
        result(true)
      case "isPlaying":
          result(engine.isPlaying)
+
+     case "setBPM":
+        if let arguments = call.arguments as? [String: Any]{
+            let bpm = arguments["bpm"] as? Int ?? 120
+
+        }
      default:
        result(FlutterMethodNotImplemented)
      }
